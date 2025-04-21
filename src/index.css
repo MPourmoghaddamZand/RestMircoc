@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Pinar-light";
+    font-weight: 100 900;
+    src: url("/public/fonts/Pinar-Light.ttf");
+}
+@font-face {
+    font-family: "Pinar-medium";
+    font-weight: 100 900;
+    src: url("/public/fonts/Pinar-Medium.ttf");
+}
+@font-face {
+    font-family: "Pinar-bold";
+    font-weight: 100 900;
+    src: url("/public/fonts/Pinar-Bold.ttf");
+}
+@font-face {
+    font-family: "Pinar-extra";
+    font-weight: 100 900;
+    src: url("/public/fonts/Pinar-Extra.ttf");
+}
+
+
+.plus{
+    background: linear-gradient(-137.974deg, #ddd -50%, #fff 90%);
+}
+
+.box{
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.40);
+}
