@@ -10,7 +10,7 @@ const ProductBox = ({ img, title, info, price }) => {
   const { popUpIsOpen, setPopUpIsOpen } = useContext(SharedContext);
   function handleAddClick(event) {
     event.stopPropagation();
-    setIsActive((prev)=> !prev)
+    setIsActive((prev) => !prev)
   }
   function handleNumberClick(event) {
     setIsActive((prev) => !prev)
@@ -40,10 +40,9 @@ const ProductBox = ({ img, title, info, price }) => {
           <div className="flex-1 p-2">
             {
               isActive ?
-              <NumberSection onClick={() => handleNumberClick()} />
-              :
-              <Button onClick={(event) => handleAddClick(event)} text={"افزودن +"} />
-
+                <NumberSection onClick={() => handleNumberClick()} />
+                :
+                <Button onClick={(event) => handleAddClick(event)} text={"افزودن +"} />
             }
           </div>
           <div className="flex justify-center items-center flex-1">
