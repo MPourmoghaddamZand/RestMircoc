@@ -50,7 +50,6 @@ const DragSheet = ({ children, className = "", onClose, ...props }) => {
     <div
       onTouchStart={(e) => startDrag(e.touches[0].clientY)}
       onTouchMove={(e) => {
-        if (e.cancelable) e.preventDefault();
         moveDrag(e.touches[0].clientY);
       }}
       onTouchEnd={(e) => endDrag(e)}

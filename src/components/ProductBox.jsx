@@ -3,9 +3,18 @@ import { div } from "three/tsl";
 import Button from "./util/Button";
 import { tomanSVG } from "../../public/svg";
 import { SharedContext } from "../Context";
+import NumberSection from "./NumberSection";
 
 const ProductBox = ({ img, title, info, price }) => {
-  const {popUpIsOpen, setPopUpIsOpen} = useContext(SharedContext);
+  const [isActive, setIsActive] = useState(false);
+  const { popUpIsOpen, setPopUpIsOpen } = useContext(SharedContext);
+  function handleAddClick(event) {
+    event.stopPropagation();
+    setIsActive((prev) => !prev)
+  }
+  function handleNumberClick(event) {
+    setIsActive((prev) => !prev)
+  }
   return (
     <>
       <div
@@ -29,7 +38,12 @@ const ProductBox = ({ img, title, info, price }) => {
 
         <div className="flex flex-row-reverse justify-between">
           <div className="flex-1 p-2">
-            <Button text={"+ افزودن"} />
+            {
+              isActive ?
+                <NumberSection onClick={() => handleNumberClick()} />
+                :
+                <Button onClick={(event) => handleAddClick(event)} text={"افزودن +"} />
+            }
           </div>
           <div className="flex justify-center items-center flex-1">
             <img className="w-6 pb-1" src={tomanSVG} alt="" />
