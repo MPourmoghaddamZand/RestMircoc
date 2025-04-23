@@ -8,9 +8,11 @@ import NumberSection from "./NumberSection";
 const ProductBox = ({ img, title, info, price }) => {
   const [isActive, setIsActive] = useState(false);
   const { popUpIsOpen, setPopUpIsOpen } = useContext(SharedContext);
+  const { shopCount, setShopCount } = useContext(SharedContext);
   function handleAddClick(event) {
     event.stopPropagation();
     setIsActive((prev) => !prev)
+    setShopCount((prev) => (prev += 1));
   }
   function handleNumberClick(event) {
     setIsActive((prev) => !prev)
