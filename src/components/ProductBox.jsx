@@ -11,11 +11,12 @@ const ProductBox = ({ img, title, info, price }) => {
   const { shopCount, setShopCount } = useContext(SharedContext);
   function handleAddClick(event) {
     event.stopPropagation();
-    setIsActive((prev) => !prev)
+    setIsActive((prev) => !prev);
     setShopCount((prev) => (prev += 1));
   }
   function handleNumberClick(event) {
-    setIsActive((prev) => !prev)
+    setIsActive((prev) => !prev);
+    setShopCount((prev) => (prev -= 1));
   }
   return (
     <>
@@ -40,12 +41,14 @@ const ProductBox = ({ img, title, info, price }) => {
 
         <div className="flex flex-row-reverse justify-between">
           <div className="flex-1 p-2">
-            {
-              isActive ?
-                <NumberSection onClick={() => handleNumberClick()} />
-                :
-                <Button onClick={(event) => handleAddClick(event)} text={"افزودن +"} />
-            }
+            {isActive ? (
+              <NumberSection onClick={() => handleNumberClick()} />
+            ) : (
+              <Button
+                onClick={(event) => handleAddClick(event)}
+                text={"افزودن +"}
+              />
+            )}
           </div>
           <div className="flex justify-center items-center flex-1">
             <img className="w-6 pb-1" src={tomanSVG} alt="" />
