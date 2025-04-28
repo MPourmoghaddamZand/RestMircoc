@@ -4,10 +4,14 @@ import Button from "./util/Button";
 import { tomanSVG } from "../../public/svg";
 import { SharedContext } from "../Context";
 import NumberSection from "./NumberSection";
+import InfoProduct from "./InfoProduct";
 
 const ProductBox = ({ item }) => {
-  const { popUpIsOpen, setPopUpIsOpen } = useContext(SharedContext);
-  const { cart, setCart } = useContext(SharedContext)
+  const { cart, setCart, openProductId, setOpenProductId } = useContext(SharedContext);
+
+  function handlePopUpInfo(itemId) {
+    setOpenProductId((prev) => (prev === itemId ? null : itemId)); // Toggle popup for the specific item
+  }
   function handleAddClick(event, item) {
     event.stopPropagation();
     setCart((prev) => ({
@@ -17,9 +21,10 @@ const ProductBox = ({ item }) => {
   }
   return (
     <>
+      {openProductId === item.id && <InfoProduct item={item} />}
       <div
         className="w-full min-w-[315px] p-2 bg-white rounded-[40px] drop-shadow-md"
-        onClick={() => setPopUpIsOpen(!popUpIsOpen)}
+        onClick={() => handlePopUpInfo(item.id)}
       >
         <div className="flex">
           <div className="w-1/2 relative">
