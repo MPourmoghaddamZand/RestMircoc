@@ -17,6 +17,7 @@
     "gsap": "^3.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.5.2",
     "react-spring-bottom-sheet": "^3.4.1",
     "three": "^0.175.0"
   },
