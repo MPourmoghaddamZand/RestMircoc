@@ -17,7 +17,6 @@ const App = () => {
       <Searchbar />
       <ProductList />
       {popUpIsOpen && (
-        
         <InfoProduct
           img={badamzamini}
           info={"قارچ نون ، پنیر ، گوجه ، خیار سبزی"}
