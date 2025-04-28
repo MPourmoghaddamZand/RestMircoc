@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "چای سبز",
+        "detail": "چای سبز با طعم تازه و خاصیت آنتی‌اکسیدانی بالا.",
+        "price": 35000,
+        "image": "product/badam_hendi_kham_up_7275.webp"
+    },
+    {
+        "id": 2,
+        "name": "چای نعناعی",
+        "detail": "چای سیاه با عطر و طعم نعناع، مناسب برای بعد از غذا.",
+        "price": 40000,
+        "image": "product/badam_hendi_kham_up_7275.webp"
+    },
+    {
+        "id": 3,
+        "name": "چای دارچینی",
+        "detail": "چای سیاه با طعم دارچین و خاصیت گرم کنندگی.",
+        "price": 38000,
+        "image": "product/badam_hendi_kham_up_7275.webp"
+    }
+]

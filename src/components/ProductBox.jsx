@@ -5,18 +5,15 @@ import { tomanSVG } from "../../public/svg";
 import { SharedContext } from "../Context";
 import NumberSection from "./NumberSection";
 
-const ProductBox = ({ img, title, info, price }) => {
-  const [isActive, setIsActive] = useState(false);
+const ProductBox = ({ item }) => {
   const { popUpIsOpen, setPopUpIsOpen } = useContext(SharedContext);
-  const { shopCount, setShopCount } = useContext(SharedContext);
-  function handleAddClick(event) {
+  const { cart, setCart } = useContext(SharedContext)
+  function handleAddClick(event, item) {
     event.stopPropagation();
-    setIsActive((prev) => !prev);
-    setShopCount((prev) => (prev += 1));
-  }
-  function handleNumberClick(event) {
-    setIsActive((prev) => !prev);
-    setShopCount((prev) => (prev -= 1));
+    setCart((prev) => ({
+      ...prev,
+      [item.id]: (prev[item.id] || 0) + 1
+    }))
   }
   return (
     <>
@@ -28,31 +25,31 @@ const ProductBox = ({ img, title, info, price }) => {
           <div className="w-1/2 relative">
             <div className="h-[140px]" />
             <div className="absolute -top-10 box bg-gradient-to-r from-[#ddd] via-white to-[#ddd] rounded-full drop-shadow-[0px_10px_20px_0px_rgba(0,0,0,0.32)] shadow-[inset_0px_0px_35px_0px_rgba(0,0,0,0.25)]">
-              <img className="w-full max-w-[160px]" src={img} alt="" />
+              <img className="w-full max-w-[160px]" src={item.image} alt="" />
             </div>
           </div>
           <div className="flex flex-col gap-3 w-1/2 p-6 text-right ">
-            <h2 className="text-[20px] font-Pinar-bold">{title}</h2>
+            <h2 className="text-[20px] font-Pinar-bold">{item.name}</h2>
             <h3 className="text-[14px] font-Pinar-medium text-disable">
-              {info}
+              {item.detail}
             </h3>
           </div>
         </div>
 
         <div className="flex flex-row-reverse justify-between">
           <div className="flex-1 p-2">
-            {isActive ? (
-              <NumberSection onClick={() => handleNumberClick()} />
+            {cart[item.id] ? (
+              <NumberSection item={item} />
             ) : (
               <Button
-                onClick={(event) => handleAddClick(event)}
+                onClick={(event) => handleAddClick(event, item)}
                 text={"افزودن +"}
               />
             )}
           </div>
           <div className="flex justify-center items-center flex-1">
             <img className="w-6 pb-1" src={tomanSVG} alt="" />
-            <p className="text-primary font-Pinar-extra text-[20px]">{price}</p>
+            <p className="text-primary font-Pinar-extra text-[20px]">{item.price}</p>
           </div>
         </div>
       </div>

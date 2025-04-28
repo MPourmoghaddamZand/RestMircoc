@@ -1,29 +1,40 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { minusSVG, plussSVG } from '../../public/svg'
-
-const NumberSection = ({ onClick }) => {
-  const {setShopCount } = useContext(SharedContext);
-  const [count, setCount] = useState(1);
+import { SharedContext } from '../Context';
+import menuData from '../data/menu.json'
+import { events } from '@react-three/fiber';
+const NumberSection = ({ onClick, item }) => {
   const [menuItems, setMenuItems] = useState([]);
-  function handlePlus(event) {
+  const { cart, setCart } = useContext(SharedContext);
+  useEffect(() => {
+    setMenuItems(menuData)
+  }, [])
+
+  function addToCart(item, event) {
     event.stopPropagation();
-    setCount((prev) => (prev += 1));
-    setShopCount((prev) => (prev += 1));
+    setCart((prev) => ({
+      ...prev,
+      [item.id]: (prev[item.id] || 0) + 1
+    }))
   }
-  function handleMinus(event) {
+  function removeFromCart(item, event) {
     event.stopPropagation();
-    if (count == 1) {
-      onClick();
-      return;
-    }
-    setCount((prev) => (prev -= 1));
-    setShopCount((prev) => (prev -= 1));
+    setCart((prev) => {
+      if (!prev[item.id])
+        return
+      const newCart = { ...prev }
+      newCart[item.id]--;
+      if (newCart[item.id] <= 0) {
+        delete newCart[item.id]
+      }
+      return newCart
+    })
   }
   return (
     <div className='flex gap-5 justify-center items-center w-full' >
-      <div onClick={handlePlus}><img src={plussSVG} alt="" /></div>
-      <div><p>{count}</p></div>
-      <div onClick={handleMinus} ><img src={minusSVG} alt="" /></div>
+      <div className='cursor-pointer' onClick={(event) => addToCart(item, event)}><img src={plussSVG} alt="" /></div>
+      <div><p>{cart[item.id] || 0}</p></div>
+      <div className='cursor-pointer' onClick={(event) => removeFromCart(item, event)}><img src={minusSVG} alt="" /></div>
     </div>
   );
 };
