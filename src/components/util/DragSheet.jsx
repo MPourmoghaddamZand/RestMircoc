@@ -21,7 +21,6 @@ const DragSheet = ({ children, className = "", onClose, ...props }) => {
     setAnimate(false);
     startY.current = y;
   };
-
   const moveDrag = (y) => {
     if (!dragging) return;
     const delta = y - startY.current;
