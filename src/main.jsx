@@ -7,6 +7,12 @@ import { SharedContext, SharedProvider } from "./Context.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <SharedProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/cart" element={<ShopCart />} />
+        </Routes>
+      </BrowserRouter>
       <App />
     </SharedProvider>
   </StrictMode>

@@ -10,11 +10,6 @@ const App = () => {
       <Hero />
       <Searchbar />
       <ProductList />
-      {/* {popUpIsOpen && (
-        <InfoProduct
-          item={item}
-        />
-      )} */}
       <div className="h-[1000px]"></div>
     </div>
   );
