@@ -16,6 +16,7 @@ const NumberSection = ({ onClick, item }) => {
       ...prev,
       [item.id]: (prev[item.id] || 0) + 1
     }))
+    console.log(cart)
   }
   function removeFromCart(item, event) {
     event.stopPropagation();

@@ -3,6 +3,8 @@ import { chevronSVG, shopEmptySVG } from '../../public/svg'
 import Button from './util/Button'
 import { SharedContext } from '../Context'
 import { Link } from 'react-router-dom'
+import ShopList from './ShopList'
+import { div } from 'three/tsl'
 
 const ShopCart = () => {
     const { cart, setCart } = useContext(SharedContext)
@@ -19,7 +21,7 @@ const ShopCart = () => {
                 <div className='flex-1'><h2 className='text-center font-Pinar-bold'>سبد خرید</h2></div>
                 <div className='flex-1'></div>
             </nav>
-            {isCartEmpty && <div className='flex-grow flex justify-center'>
+            {isCartEmpty ? <div className='flex-grow flex justify-center'>
                 <div className='flex flex-col text-center justify-center items-center gap-10'>
                     <div className='pr-5'>
                         <img src={shopEmptySVG} alt="" />
@@ -31,9 +33,20 @@ const ShopCart = () => {
                         </h4>
                     </div>
                 </div>
-            </div>}
+            </div> :
+                <div className='flex-grow flex justify-center'>
+                    <ShopList />
+                </div>
+            }
             <div>
-                <Button text={"فروشگاه"} className='bg-primary rounded-[16px] py-3 text-white font-Pinar-bold text-[16px] w-full' />
+                {isCartEmpty ?
+                    <Link to={'/'}>
+                        <Button text={"رفتن به منو"} className='bg-primary rounded-[16px] py-3 text-white font-Pinar-bold text-[16px] w-full' />
+                    </Link>
+                    :
+                    <Button text={"ثبت سفارش"} className='bg-primary rounded-[16px] py-3 text-white font-Pinar-bold text-[16px] w-full' />
+                }
+
             </div>
         </div>
     )
