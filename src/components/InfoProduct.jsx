@@ -14,12 +14,12 @@ export default function InfoProduct({ item }) {
   return (
     <>
       <div
-        className="fixed inset-0 bg-black/50 z-10"
+        className="fixed inset-0 bg-black/50 z-40"
         onMouseDown={closePopup}
       />
       <DragSheet
         onClose={closePopup}
-        className="fixed bottom-0 left-0 right-0 bg-white z-20 rounded-t-[24px] shadow-lg flex flex-col"
+        className="fixed bottom-0 left-0 right-0 bg-white z-50 rounded-t-[24px] shadow-lg flex flex-col"
       >
         <div>
           <div className="w-2/12 h-2 mt-3 m-auto rounded-full bg-[#ddd]" />

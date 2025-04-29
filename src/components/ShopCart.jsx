@@ -6,14 +6,18 @@ import { Link } from 'react-router-dom'
 import ShopList from './ShopList'
 import { div } from 'three/tsl'
 import SubmitForm from './SubmitForm'
-
+import menuData from '../data/menu.json'
 const ShopCart = () => {
     const { cart, setCart } = useContext(SharedContext)
     const isCartEmpty = Object.keys(cart).length === 0;
     console.log(Object.keys(cart).length)
+    const totalPrice = Object.keys(cart).reduce((acc, id) => {
+        const item = menuData.find(m => m.id === parseInt(id));
+        return acc + (item?.price || 0) * cart[id];
+    }, 0);
     return (
         <div className='w-full h-screen bg-bg-color overflow-x-hidden font-Pinar-medium relative flex flex-col p-8'>
-            <nav className='flex justify-between'>
+            <nav className='flex sticky justify-between'>
                 <div className='flex-1 cursor-pointer'>
                     <Link to={'/'}>
                         <div><img src={chevronSVG} alt="" /></div>
@@ -38,6 +42,10 @@ const ShopCart = () => {
                 <div className='flex-grow flex flex-col justify-center'>
                     <SubmitForm />
                     <ShopList />
+                    <div className='flex flex-row-reverse gap-5'>
+                         <h4>مجموع قیمت </h4>
+                        <p>{totalPrice}</p>
+                    </div>
                 </div>
             }
             <div>
