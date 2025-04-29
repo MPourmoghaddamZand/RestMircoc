@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { menuSVG, shopSVG } from "../../public/svg";
 import { SharedContext } from "../Context";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "./util/Button";
 
 const Navbar = () => {
   const { cart } = useContext(SharedContext)
@@ -23,6 +24,13 @@ const Navbar = () => {
           <img src={menuSVG} alt="menuSVG" />
         </div>
       </div>
+      {totalItems > 0 &&
+        <div className="fixed bottom-5 left-1/2 -translate-x-1/2 w-10/12">
+          <Link to={'/cart'}>
+            <Button text={"مشاهده سبد خرید"} className={'p-10 text-xl rounded-[20px] drop-shadow-2xl'} />
+          </Link>
+        </div>
+      }
     </nav>
   );
 };

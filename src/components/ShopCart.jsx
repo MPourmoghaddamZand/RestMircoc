@@ -5,13 +5,14 @@ import { SharedContext } from '../Context'
 import { Link } from 'react-router-dom'
 import ShopList from './ShopList'
 import { div } from 'three/tsl'
+import SubmitForm from './SubmitForm'
 
 const ShopCart = () => {
     const { cart, setCart } = useContext(SharedContext)
     const isCartEmpty = Object.keys(cart).length === 0;
     console.log(Object.keys(cart).length)
     return (
-        <div className='w-full h-screen overflow-x-hidden font-Pinar-medium relative flex flex-col p-8'>
+        <div className='w-full h-screen bg-bg-color overflow-x-hidden font-Pinar-medium relative flex flex-col p-8'>
             <nav className='flex justify-between'>
                 <div className='flex-1 cursor-pointer'>
                     <Link to={'/'}>
@@ -34,7 +35,8 @@ const ShopCart = () => {
                     </div>
                 </div>
             </div> :
-                <div className='flex-grow flex justify-center'>
+                <div className='flex-grow flex flex-col justify-center'>
+                    <SubmitForm />
                     <ShopList />
                 </div>
             }
