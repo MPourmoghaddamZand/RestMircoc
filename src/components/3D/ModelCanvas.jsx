@@ -4,28 +4,24 @@ import { Environment, Float, OrbitControls } from "@react-three/drei";
 import { HamberModel } from "./HamberModel";
 
 function ResettableOrbitControls() {
-  const controlsRef = useRef()
-  const timeoutRef = useRef()
+  const controlsRef = useRef();
+  const timeoutRef = useRef();
   useEffect(() => {
-    const controls = controlsRef.current
-
+    const controls = controlsRef.current;
     const handleEnd = () => {
-      // وقتی کاربر درگ رو متوقف کرد، 100ms بعد روتیشن رو ریست کن
-      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => {
-        controls.setAzimuthalAngle(0)
-        controls.setPolarAngle(Math.PI / 2)
-        controls.update()
-      }, 600) // این رو هر عددی خواستی بذار
-    }
-
-    controls?.addEventListener('end', handleEnd)
-
+        controls.setAzimuthalAngle(0);
+        controls.setPolarAngle(Math.PI / 2);
+        controls.update();
+      }, 600);
+    };
+    controls?.addEventListener("end", handleEnd);
     return () => {
-      controls?.removeEventListener('end', handleEnd)
-      if (timeoutRef.current) clearTimeout(timeoutRef.current)
-    }
-  }, [])
+      controls?.removeEventListener("end", handleEnd);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   return (
     <OrbitControls
@@ -33,10 +29,9 @@ function ResettableOrbitControls() {
       enableZoom={false}
       enablePan={false}
     />
-  )
+  );
 }
 const ModelCanvas = () => {
-  const ref = useRef(null);
   return (
     <Canvas
       style={{
@@ -54,7 +49,7 @@ const ModelCanvas = () => {
       dpr={[1, 1.5]}
       gl={{ antialias: true }}
     >
-      <group scale={1.1} ref={ref} position={[0, 0, 0]}>
+      <group scale={1.1} rotation={[0, 0.7, 0.2]} position={[0, 0, 0]}>
         <Float
           speed={3}
           floatIntensity={0.1}
@@ -66,7 +61,7 @@ const ModelCanvas = () => {
       </group>
       <ResettableOrbitControls />
       <Environment files={"/hdrs/lobby.hdr"} environmentIntensity={1} />
-      <directionalLight position={[1, 1, 2]} intensity={5} />
+      <directionalLight position={[1, 1, 2]} intensity={3} />
     </Canvas>
   );
 };

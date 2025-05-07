@@ -34,14 +34,14 @@ const DragSheet = ({ children, className = "", onClose, ...props }) => {
 
     if (delta > 100) {
       setAnimate(true);
-      setTranslation(500); // animate out
+      setTranslation(500);
       setTimeout(() => {
         onClose?.();
         setTranslation(0);
       }, 300);
     } else {
       setAnimate(true);
-      setTranslation(0); // go back
+      setTranslation(0);
     }
   };
 

@@ -3,7 +3,7 @@ import ModelCanvas from "./3D/ModelCanvas";
 
 const Hero = () => {
   return (
-    <div className="w-full relative">
+    <div className="w-full relative mt-[100px]">
       <div className="flex flex-row-reverse w-[90%] text-xl bg-secound rounded-[30px] py-9 mt-10 mx-auto">
         <div className="flex-1">
           <ModelCanvas />

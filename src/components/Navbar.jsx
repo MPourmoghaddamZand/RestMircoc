@@ -8,8 +8,8 @@ const Navbar = () => {
   const { cart } = useContext(SharedContext)
   const totalItems = Object.values(cart).reduce((acc, val) => acc + val, 0);
   return (
-    <nav className="fixed w-full z-50">
-      <div className="flex px-12 pt-8 justify-between">
+    <nav className="fixed bg-bg-color w-full z-50">
+      <div className="flex px-12 py-8 justify-between">
         <Link to={'/cart'}>
           <div className="relative">
             <img src={shopSVG} color="black" alt="shopSVG" />
@@ -25,7 +25,7 @@ const Navbar = () => {
         </div>
       </div>
       {totalItems > 0 &&
-        <div className="fixed bottom-5 left-1/2 -translate-x-1/2 w-10/12">
+        <div className="fixed bottom-0 left-1/2 py-10 -translate-x-1/2 w-10/12">
           <Link to={'/cart'}>
             <Button text={"مشاهده سبد خرید"} className={'p-10 text-xl rounded-[20px] drop-shadow-2xl'} />
           </Link>
