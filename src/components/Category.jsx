@@ -44,7 +44,7 @@ const Category = () => {
     return (
         <>
             <div ref={sentinelRef} style={{ height: 1 }} />
-            <div className={`w-full bg-bg-color z-10 sticky top-[88px] drop-shadow-md ${isSticky ? "drop-shadow-lg" : "drop-shadow-none"}`}>
+            <div className={`w-full bg-bg-color z-50 sticky top-[88px] drop-shadow-md ${isSticky ? "drop-shadow-2xl" : "drop-shadow-none"}`}>
                 <div className={`flex  gap-5 mt-7 mb-14 mx-5 pb-5`} >
                     {Categorylist.map((item) => (
                         <CategoryItem

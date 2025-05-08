@@ -20,6 +20,7 @@ const Navbar = () => {
             }
           </div>
         </Link>
+        <h1 className="font-[potk] text-2xl">Mircoc Resturant</h1>
         <div>
           <img src={menuSVG} alt="menuSVG" />
         </div>
