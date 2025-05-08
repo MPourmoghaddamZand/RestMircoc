@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { BurgerSVG } from './svg/SvgCategory'
 
-
 const Categorylist = [
     { id: 1, title: "پیتزا" },
     { id: 2, title: "ساندویچ" },
@@ -9,32 +8,35 @@ const Categorylist = [
     { id: 4, title: "نوشیدنی" },
 ]
 
-const CategoryItem = ({ title, children }) => {
-    const [active, setActive] = useState(false)
-    const handleClick = () => {
-        setActive((prev) => !prev)
-    }
+const CategoryItem = ({ title, children, active, onClick }) => {
     return (
-        <>
-            <div className={`flex gap-1 min-w-32 py-2 px-5 rounded-full  drop-shadow-md justify-center items-center cursor-pointer 
+        <div
+            className={`flex gap-1 min-w-32 py-2 px-5 rounded-full drop-shadow-md justify-center items-center cursor-pointer 
                 ${active ? 'bg-primary' : 'bg-white'}`}
-                onClick={handleClick}
-            >
-                <div className={`${active ? 'svg-active' : ''}`} >
-                    {children}
-                </div>
-                <div><p className={` ${active ? 'text-white' : ''}`}>{title}</p></div>
+            onClick={onClick}
+        >
+            <div className={`${active ? 'svg-active' : ''}`}>
+                {children}
             </div>
-        </>
+            <div>
+                <p className={`${active ? 'text-white' : ''}`}>{title}</p>
+            </div>
+        </div>
     )
 }
 
-
 const Category = () => {
+    const [activeId, setActiveId] = useState(null)
+
     return (
-        <div className='flex gap-5 my-20 overflow-x-auto'>
+        <div className='flex gap-5 my-20 mx-5'>
             {Categorylist.map((item) => (
-                <CategoryItem title={item.title}>
+                <CategoryItem
+                    key={item.id}
+                    title={item.title}
+                    active={activeId === item.id}
+                    onClick={() => setActiveId(item.id)}
+                >
                     <BurgerSVG />
                 </CategoryItem>
             ))}
