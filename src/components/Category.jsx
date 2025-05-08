@@ -46,7 +46,7 @@ const Category = () => {
         <>
             <div ref={sentinelRef} style={{ height: 1 }} />
             <div className={`w-full bg-bg-color z-50 sticky top-[88px] drop-shadow-md ${isSticky ? "drop-shadow-2xl" : "drop-shadow-none"}`}>
-                <div className={`flex  gap-5 mt-7 mb-14 ml-5 pb-5 overflow-x-auto scroll-smooth hide-scrollbar`} >
+                <div className={`flex  gap-5 mt-7 mb-14 px-5 pb-5 overflow-x-auto scroll-smooth hide-scrollbar`} >
                     {Categorylist.map((item) => (
                         <CategoryItem
                             key={item.id}
