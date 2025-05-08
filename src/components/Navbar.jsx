@@ -9,7 +9,7 @@ const Navbar = () => {
   const totalItems = Object.values(cart).reduce((acc, val) => acc + val, 0);
   return (
     <nav className="fixed bg-bg-color w-full z-50">
-      <div className="flex px-12 py-8 justify-between">
+      <div className="flex px-12 py-8 justify-between items-center">
         <Link to={'/cart'}>
           <div className="relative">
             <img src={shopSVG} color="black" alt="shopSVG" />
@@ -20,7 +20,7 @@ const Navbar = () => {
             }
           </div>
         </Link>
-        <h1 className="font-[potk] text-2xl">Mircoc Resturant</h1>
+        <h1 className="font-[potk] text-2xl pt-1">Mircoc Resturant</h1>
         <div>
           <img src={menuSVG} alt="menuSVG" />
         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { BurgerSVG } from './svg/SvgCategory'
+import { use } from 'react'
 
 const Categorylist = [
     { id: 1, title: "پیتزا" },
@@ -15,7 +16,7 @@ const CategoryItem = ({ title, children, active, onClick }) => {
                 ${active ? 'bg-primary' : 'bg-white'}`}
             onClick={onClick}
         >
-            <div className={`${active ? 'svg-active' : ''}`}>
+            <div className={`${active ? 'fill-white' : ''}`}>
                 {children}
             </div>
             <div>
@@ -26,7 +27,7 @@ const CategoryItem = ({ title, children, active, onClick }) => {
 }
 
 const Category = () => {
-    const [activeId, setActiveId] = useState(null)
+    const [activeId, setActiveId] = useState(Categorylist[0].id);
     const [isSticky, setIsSticky] = useState(false);
     const sentinelRef = useRef(null);
     useEffect(() => {
@@ -45,7 +46,7 @@ const Category = () => {
         <>
             <div ref={sentinelRef} style={{ height: 1 }} />
             <div className={`w-full bg-bg-color z-50 sticky top-[88px] drop-shadow-md ${isSticky ? "drop-shadow-2xl" : "drop-shadow-none"}`}>
-                <div className={`flex  gap-5 mt-7 mb-14 mx-5 pb-5`} >
+                <div className={`flex  gap-5 mt-7 mb-14 ml-5 pb-5 overflow-x-auto scroll-smooth hide-scrollbar`} >
                     {Categorylist.map((item) => (
                         <CategoryItem
                             key={item.id}
