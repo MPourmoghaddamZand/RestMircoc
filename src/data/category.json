@@ -1,0 +1,6 @@
+[
+  { "id": 1, "category": "pizza", "title": "پیتزا", "svg": "/svg/pizza.svg" },
+  { "id": 2, "category": "sandwich", "title": "ساندویچ", "svg": "/svg/sandwich.svg" },
+  { "id": 3, "category": "burger", "title": "برگر", "svg": "/svg/burgericon.svg" },
+  { "id": 4, "category": "drink", "title": "نوشیدنی", "svg": "/svg/drinkicon.svg" }
+]
