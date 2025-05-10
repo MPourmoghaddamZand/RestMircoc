@@ -1,18 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { chevronSVG, shopEmptySVG } from '../../public/svg'
 import Button from './util/Button'
 import { SharedContext } from '../Context'
 import { Link } from 'react-router-dom'
 import ShopList from './ShopList'
-import { div } from 'three/tsl'
 import SubmitForm from './SubmitForm'
-import menuData from '../data/menu.json'
+import axios from 'axios'
 const ShopCart = () => {
+    const [menu, setMenu] = useState([]);
+    useEffect(() => {
+        axios.get("http://localhost:5000/api/menu")
+            .then((response) => {
+                setMenu(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching menu:", error);
+            });
+    }, []);
     const { cart, setCart } = useContext(SharedContext)
     const isCartEmpty = Object.keys(cart).length === 0;
     console.log(Object.keys(cart).length)
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
-        const item = menuData.find(m => m.id === parseInt(id));
+        const item = menu.find(m => m.id === parseInt(id));
         return acc + (item?.price || 0) * cart[id];
     }, 0);
     return (
@@ -43,7 +52,7 @@ const ShopCart = () => {
                     <SubmitForm />
                     <ShopList />
                     <div className='flex flex-row-reverse gap-5'>
-                         <h4>مجموع قیمت </h4>
+                        <h4>مجموع قیمت </h4>
                         <p>{totalPrice}</p>
                     </div>
                 </div>

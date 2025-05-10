@@ -1,14 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { minusSVG, plussSVG } from '../../public/svg'
 import { SharedContext } from '../Context';
-import menuData from '../data/menu.json'
 import { events } from '@react-three/fiber';
 const NumberSection = ({ onClick, item }) => {
-  const [menuItems, setMenuItems] = useState([]);
   const { cart, setCart } = useContext(SharedContext);
-  useEffect(() => {
-    setMenuItems(menuData)
-  }, [])
   const toPersianDigits = (str) => {
     return String(str).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
   };

@@ -1,14 +1,22 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SharedContext } from '../Context'
-import menuData from '../data/menu.json'
 import NumberSection from './NumberSection'
 
 const ShopList = () => {
     const { cart, setCart } = useContext(SharedContext)
-    const [order, setOrder] = useState({})
+    const [menu, setMenu] = useState([]);
+    useEffect(() => {
+        axios.get("http://localhost:5000/api/menu")
+            .then((response) => {
+                setMenu(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching menu:", error);
+            });
+    }, []);
     const ShopList =
         Object.entries(cart).map(([itemId, quantity]) => {
-            const item = menuData.find((menuItem) => menuItem.id === parseInt(itemId));
+            const item = menu.find((menuItem) => menuItem.id === parseInt(itemId));
             if (!item) return null; // اگر آیتم پیدا نشد، چیزی نمایش ندهد
             return (
                 <li key={itemId} className="flex items-center w-full justify-center gap-4">
