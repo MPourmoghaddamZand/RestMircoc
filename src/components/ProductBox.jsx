@@ -8,7 +8,8 @@ import InfoProduct from "./InfoProduct";
 
 const ProductBox = ({ item }) => {
   const { cart, setCart, openProductId, setOpenProductId } = useContext(SharedContext);
-
+  const backendUrl = "http://localhost:5000";
+  const imageUrl = `${backendUrl}${item.image}`;
   function handlePopUpInfo(itemId) {
     setOpenProductId((prev) => (prev === itemId ? null : itemId)); // Toggle popup for the specific item
   }
@@ -30,7 +31,7 @@ const ProductBox = ({ item }) => {
           <div className="w-1/2 relative">
             <div className="h-[140px]" />
             <div className="absolute -top-10 box bg-gradient-to-r from-[#ddd] via-white to-[#ddd] rounded-full drop-shadow-[0px_10px_20px_0px_rgba(0,0,0,0.32)] shadow-[inset_0px_0px_35px_0px_rgba(0,0,0,0.25)]">
-              <img className="w-full max-w-[160px]" src={item.image} alt="" />
+              <img className="w-full max-w-[160px]" src={imageUrl} alt="" />
             </div>
           </div>
           <div className="flex flex-col gap-3 w-1/2 p-6 text-right ">

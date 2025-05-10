@@ -1,58 +1,10 @@
 [
-    {
-        "id": 1,
-        "name": "چای سبز",
-        "detail": "چای سبز با طعم تازه و خاصیت آنتی‌اکسیدانی بالا.",
-        "price": 35000,
-        "category": "sandwich",
-        "image": "product/badam_hendi_kham_up_7275.webp"
-    },
-    {
-        "id": 2,
-        "name": "چای نعناعی",
-        "detail": "چای سیاه با عطر و طعم نعناع، مناسب برای بعد از غذا.",
-        "price": 40000,
-        "category": "sandwich",
-        "image": "product/badam_hendi_kham_up_7275.webp"
-    },
-    {
-        "id": 3,
-        "name": "چای دارچینی",
-        "detail": "چای سیاه با طعم دارچین و خاصیت گرم کنندگی.",
-        "category": "drink",
-        "price": 38000,
-        "image": "product/badam_hendi_kham_up_7275.webp"
-    },
-    {
-        "id": 4,
-        "name": "چای سبز",
-        "detail": "چای سبز با طعم تازه و خاصیت آنتی‌اکسیدانی بالا.",
-        "price": 35000,
-        "category": "pizza",
-        "image": "product/badam_hendi_kham_up_7275.webp"
-    },
-    {
-        "id": 5,
-        "name": "چای نعناعی",
-        "detail": "چای سیاه با عطر و طعم نعناع، مناسب برای بعد از غذا.",
-        "price": 40000,
-        "category": "burger",
-        "image": "product/badam_hendi_kham_up_7275.webp"
-    },
-    {
-        "id": 6,
-        "name": "چای دارچینی",
-        "detail": "چای سیاه با طعم دارچین و خاصیت گرم کنندگی.",
-        "category": "drink",
-        "price": 38000,
-        "image": "product/badam_hendi_kham_up_7275.webp"
-    },
-    {
-        "id": 6,
-        "name": "سینا",
-        "detail": "چای سیاه با طعم دارچین و خاصیت گرم کنندگی.",
-        "category": "pizza",
-        "price": 38000,
-        "image": "product/badam_hendi_kham_up_7275.webp"
-    }
+  {
+    "id": 1,
+    "name": "hkdjglhsklg",
+    "detail": "asfasfasasggasg",
+    "price": 123032,
+    "category": "pizza",
+    "image": "/uploads/image-1746865602957-951478006.webp"
+  }
 ]
