@@ -7,6 +7,7 @@ import NumberSection from "./NumberSection";
 
 export default function InfoProduct({ item }) {
   const { setOpenProductId } = useContext(SharedContext)
+ 
   function closePopup() {
     // setPopUpIsOpen(false); // Close global popup
     setOpenProductId(null); // Close product-specific popup
@@ -33,6 +34,8 @@ export default function InfoProduct({ item }) {
 
 const Box = ({ item }) => {
   const { cart, setCart } = useContext(SharedContext)
+  const backendUrl = "http://localhost:5000";
+  const imageUrl = `${backendUrl}${item.image}`;
   function handleAddClick(event, item) {
     event.stopPropagation();
     setCart((prev) => ({
@@ -45,7 +48,7 @@ const Box = ({ item }) => {
       <div className="flex px-5">
         <div className="w-[40%] relative">
           <div className="bg-gradient-to-r from-[#ddd] via-white to-[#ddd] rounded-full shadow-[inset_0px_0px_35px_0px_rgba(0,0,0,0.95)]">
-            <img className="w-full" src={item.image} alt="" />
+            <img className="w-full" src={imageUrl} alt="" />
           </div>
         </div>
         <div className="w-[60%] flex flex-col gap-3 p-6 text-right">

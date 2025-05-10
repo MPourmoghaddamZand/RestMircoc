@@ -28,7 +28,12 @@ const Navbar = () => {
       {totalItems > 0 &&
         <div className="fixed bottom-0 left-1/2 py-10 -translate-x-1/2 w-10/12">
           <Link to={'/cart'}>
-            <Button text={"مشاهده سبد خرید"} className={'p-10 text-xl rounded-[20px] drop-shadow-2xl'} />
+            <Button text={"مشاهده سبد خرید"} className={'py-4 text-xl rounded-[20px] drop-shadow-2xl backdrop-blur-[20px] outline-[1px] outline outline-orange-600 bg-primary/10'}
+              textClass="text-primary">
+              <div className="flex justify-center items-center bg-primary rounded-full w-6 h-6">
+                <p className="text-[12px] pt-[2px] text-white">{totalItems}</p>
+              </div>
+            </Button>
           </Link>
         </div>
       }

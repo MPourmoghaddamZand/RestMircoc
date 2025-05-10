@@ -60,10 +60,10 @@ const ShopCart = () => {
             <div>
                 {isCartEmpty ?
                     <Link to={'/'}>
-                        <Button text={"رفتن به منو"} className='bg-primary rounded-[16px] py-3 text-white font-Pinar-bold text-[16px] w-full' />
+                        <Button text={"رفتن به منو"} className='bg-primary rounded-[16px] py-5 text-white font-Pinar-bold text-[16px] w-full' />
                     </Link>
                     :
-                    <Button text={"ثبت سفارش"} className='bg-primary rounded-[16px] py-3 text-white font-Pinar-bold text-[16px] w-full' />
+                    <Button text={"ثبت سفارش"} className='bg-primary rounded-[16px] py-5 text-white font-Pinar-bold text-[16px] w-full' />
                 }
 
             </div>
