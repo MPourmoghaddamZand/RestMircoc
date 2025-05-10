@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ShopCart from "./components/ShopCart.jsx";
 import Admin from "./admin/Admin.jsx";
 
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <SharedProvider>

@@ -8,6 +8,10 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const menuPath = path.join(__dirname, './data/menu.json');
+const authRoutes = require('./routes/auth'); // این خط اضافه بشه
+
+
+
 
 // مسیر ذخیره‌سازی تصاویر آپلود شده
 const uploadDir = path.join(__dirname, 'public', 'uploads');
@@ -33,6 +37,7 @@ const upload = multer({ storage });
 app.use(express.json()); // برای اینکه بتونی JSON دریافت کنی
 app.use(cors());
 app.use(express.static('public')); // برای دسترسی به تصاویر
+app.use('/api', authRoutes);
 
 // Endpoint برای دریافت کتگوری‌ها
 app.get('/api/categories', (req, res) => {
