@@ -93,6 +93,32 @@ app.post('/api/menu', (req, res) => {
     });
 });
 
+// برای حذف محصول بر اساس id
+app.delete('/api/menu/:id', (req, res) => {
+    const productId = parseInt(req.params.id);
+
+    // جستجوی محصول در آرایه منو
+    const productIndex = menu.findIndex(item => item.id === productId);
+
+    if (productIndex === -1) {
+        return res.status(404).json({ message: 'محصول یافت نشد' });
+    }
+
+    // حذف محصول از آرایه
+    menu.splice(productIndex, 1);
+
+    // ذخیره مجدد به فایل JSON
+    fs.writeFile(menuPath, JSON.stringify(menu, null, 2), (err) => {
+        if (err) {
+            console.error('خطا در نوشتن فایل:', err);
+            return res.status(500).json({ message: 'خطا در ذخیره تغییرات' });
+        }
+
+        res.status(200).json({ message: 'محصول با موفقیت حذف شد' });
+    });
+});
+
+
 // شروع سرور
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

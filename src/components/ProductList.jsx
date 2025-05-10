@@ -32,7 +32,7 @@ const ProductList = () => {
             >
               {cat.title}
             </h2>
-            {console.log(`Category ID: ${cat.category}`)}
+            {/* {console.log(`Category ID: ${cat.category}`)} */}
             <div className="flex flex-col gap-10">
               {products
                 .filter((item) => item.category === cat.category)

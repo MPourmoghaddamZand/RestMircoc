@@ -3,6 +3,7 @@ import Input from '../components/util/Input';
 import Button from '../components/util/Button';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import AdminProduct from './AdminProduct';
 
 const Admin = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +31,10 @@ const Admin = () => {
             alert('خطا در ارتباط با سرور یا رمز اشتباه است.');
         }
     };
+    const handleLogout = () => {
+        localStorage.removeItem('adminLoggedIn');
+        setIsLoggedIn(false);
+    }
 
     if (!isLoggedIn) {
         return (
@@ -41,16 +46,21 @@ const Admin = () => {
             </div>
         );
     }
-
     return (
-        <>
-            <nav>
-                <h1 className="text-3xl text-center font-Pinar-medium">پنل ادمین</h1>
-                <Link to="/admin/addproduct">
-                    <Button text="افزودن محصول" className="w-10/12 mx-auto mt-5" />
-                </Link>
+        <div className='h-screen bg-bg-color'>
+            <nav className='flex justify-center py-5'>
+                <h1 className="flex-1 text-3xl text-center font-Pinar-medium">پنل ادمین</h1>
             </nav>
-        </>
+            <div className='flex justify-between w-10/12 mx-auto'>
+                <Button text={"خروج از حساب"} className={'px-10'} textClass='text-white' onClick={() => handleLogout()} />
+                <Link to="/admin/addproduct">
+                    <Button text="افزودن محصول" className={"px-10"} />
+                </Link>
+            </div>
+            <div>
+                <AdminProduct />
+            </div>
+        </div>
     );
 };
 
