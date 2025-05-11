@@ -40,26 +40,26 @@ const AdminProduct = () => {
     };
 
     return (
-        <div className='font-Pinar-medium p-10'>
+        <div className='font-Pinar-medium text-[10px] p-10'>
             {products.length === 0 ? (
                 <div className='flex justify-center items-center'>محصولی وجود ندارد</div>
             ) : (
                 <>
                     {products.map((item) => (
                         <>
-                            {popup && (
+                            {popup === item.id && (
                                 <div className='font-Pinar-medium fixed flex justify-center items-center w-screen h-screen top-0 left-0 z-50'>
                                     <div className='p-10 text-center rounded-xl bg-white z-10'>
-                                        <h2 className='mb-10'>آیا مطمین هستید ؟</h2>
+                                        <h2 className='mb-10 text-lg'>آیا مطمین هستید ؟</h2>
                                         <div className='flex flex-row-reverse gap-5'>
-                                            <Button text={"حذف"} onClick={() => handleDelete(item.id)} className='px-10' />
-                                            <Button text={"بازگشت"} onClick={() => setPopup((prev) => !prev)} className='!bg-black px-10' />
+                                            <Button text={"حذف"} onClick={() => { handleDelete(item.id); setPopup(null); }} className='px-10' />
+                                            <Button text={"بازگشت"} onClick={() => setPopup(null)} className='!bg-black px-10' />
                                         </div>
                                     </div>
                                     <div className='fixed w-screen h-screen backdrop-blur-sm bg-black/30 ' />
                                 </div>
                             )}
-                            <div key={item.id} className='flex flex-row-reverse justify-between items-center border-b-2 border-b-gray-300 py-5'>
+                            <div key={item.id} className='flex flex-col md:flex-row-reverse justify-between items-center border-b-2 border-b-gray-300 py-5'>
                                 <div className='flex flex-row-reverse gap-5'>
                                     <img src={`http://localhost:5000/${item.image}`} alt="" className='w-[100px] h-[100px]' />
                                     <div className='flex flex-col gap-2 items-end justify-center'>
@@ -79,7 +79,8 @@ const AdminProduct = () => {
                                         </p>
                                     </div>
                                     <div className='flex flex-col gap-1'>
-                                        <Button text={"حذف"} onClick={() => setPopup((prev) => !prev)} className='w-full text-white px-4 py-2 rounded' />
+                                        <Button text={"حذف"} onClick={() => setPopup(item.id)} className='w-full text-white px-4 py-2 rounded' />
+
                                         <Link to={'/admin/editproduct'} state={{ product: item }}>
                                             <Button text={"ویرایش"} className='w-full text-white px-4 py-2 rounded' />
                                         </Link>
