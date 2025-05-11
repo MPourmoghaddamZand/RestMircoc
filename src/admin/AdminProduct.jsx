@@ -36,7 +36,6 @@ const AdminProduct = () => {
             setPopup((prev) => !prev)
             console.error(error);
         }
-
     };
 
     return (
