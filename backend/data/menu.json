@@ -1,1 +1,34 @@
-[]
+[
+    {
+        "id": 1,
+        "name": "پیتزابشس",
+        "detail": "قارچ و پنیر",
+        "price": 150000,
+        "category": "pizza",
+        "image": "/uploads/image-1746950040838-950366411.webp"
+    },
+    {
+        "id": 2,
+        "name": "پیتزا",
+        "detail": "قارچ و پنیر",
+        "price": 150000,
+        "category": "pizza",
+        "image": "/uploads/image-1746950040838-950366411.webp"
+    },
+    {
+        "id": 3,
+        "name": "پیتزا",
+        "detail": "قارچ و پنیر",
+        "price": 150000,
+        "category": "pizza",
+        "image": "/uploads/image-1746950040838-950366411.webp"
+    },
+    {
+        "id": 4,
+        "name": "پیتزا",
+        "detail": "قارچ و پنیر",
+        "price": 150000,
+        "category": "pizza",
+        "image": "/uploads/image-1746950040838-950366411.webp"
+    }
+]
