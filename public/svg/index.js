@@ -10,6 +10,9 @@ import pizzaSVG from './pizza.svg'
 import drinkSVG from './drinkicon.svg'
 import sandwichSVG from './sandwich.svg'
 import burgerSVG from './burgericon.svg'
+import homeSVG from './home.svg'
+import orderSVG from './order.svg'
+import productSVG from './product.svg'
 
 export {
     menuSVG,
@@ -24,5 +27,8 @@ export {
     drinkSVG,
     sandwichSVG,
     burgerSVG,
+    homeSVG,
+    orderSVG,
+    productSVG
 }
 
