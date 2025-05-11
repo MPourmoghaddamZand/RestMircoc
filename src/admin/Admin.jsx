@@ -53,12 +53,13 @@ const Admin = () => {
             </nav>
             <div className='flex justify-between w-10/12 mx-auto'>
                 <Button text={"خروج از حساب"} className={'px-10'} textClass='text-white' onClick={() => handleLogout()} />
-                <Link to="/admin/addproduct">
-                    <Button text="افزودن محصول" className={"px-10"} />
-                </Link>
+                
             </div>
             <div>
-                <AdminProduct />
+                <Link to="/admin/product">
+                    <Button text="مدیریت محصولات" className={"px-10"} />
+                    
+                </Link>
             </div>
         </div>
     );
