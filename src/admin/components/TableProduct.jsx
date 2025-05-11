@@ -5,10 +5,11 @@ const TableProduct = ({ products, categories }) => {
     return (
         <table className='w-full [direction:rtl]'>
             <thead>
-                <tr className='text-center bg-bg-color text-gray-500 '>
+                <tr className='text-center text-sm bg-bg-color text-gray-500 '>
                     <th className='p-2'>عکس محصول</th>
                     <th className='p-2'>نام محصول</th>
                     <th className='p-2'>دسته بندی</th>
+                    <th className='p-2'>توضیحات</th>
                     <th className='p-2'>قیمت</th>
                     <th className='p-2'>عملیات</th>
                 </tr>
@@ -21,11 +22,15 @@ const TableProduct = ({ products, categories }) => {
                         <td className='p-2'>
                             {categories.find(cat => cat.category === item.category)?.title || item.category}
                         </td>
+                        <td className='p-2 text-[10px] w-[100px]'>{item.detail}</td>
                         <td className='p-2'>{item.price}</td>
-                        <td className='p-2 flex items-center justify-center gap-2'>
-                            <Button text={"حذف"} className={'w-full'} />
-                            <Button text={"ویرایش"} className={'w-full'} />
+                        <td className="p-2">
+                            <div className="flex justify-center items-center gap-2 h-full">
+                                <Button text="حذف" className="w-full" />
+                                <Button text="ویرایش" className="w-full" />
+                            </div>
                         </td>
+
                     </tr>
                 ))}
             </tbody>

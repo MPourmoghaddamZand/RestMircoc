@@ -18,7 +18,7 @@
     {
         "id": 3,
         "name": "پیتزا",
-        "detail": "قارچ و پنیر",
+        "detail": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.",
         "price": 150000,
         "category": "pizza",
         "image": "/uploads/image-1746950040838-950366411.webp"
