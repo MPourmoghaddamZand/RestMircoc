@@ -46,7 +46,7 @@ const EditProduct = () => {
     };
     return (
         product ? (
-            <div className='font-Pinar-medium p-10 bg-bg-color min-h-screen h-full'>
+            <div className='font-Pinar-medium p-10 bg-bg-color h-screen'>
                 <AdminNavbar title={"ویرایش محصول"} />
                 <div className='flex flex-col gap-5'>
                     <div className='w-1/2 mx-auto relative'>

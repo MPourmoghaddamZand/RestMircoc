@@ -69,8 +69,9 @@ const AdminProduct = () => {
                                 </div>
                                 <div className='flex flex-row-reverse gap-5 items-center'>
                                     <div>
-                                        <p className='text-nowrap'>{item.price} تومان</p>
+                                        <p className='text-nowrap [direction:rtl]'>{item.price} تومان</p>
                                         <p>
+                                            دسته بندی: &nbsp;
                                             {
                                                 categories.find(cat => cat.category === item.category)?.title || item.category
 
