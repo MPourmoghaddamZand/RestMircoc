@@ -1,11 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Button from '../components/util/Button';
+import { Link } from 'react-router-dom';
 
 const AdminProduct = () => {
     const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [popup, setPopup] = useState(false);
     useEffect(() => {
+        axios.get("http://localhost:5000/api/categories")
+            .then((response) => {
+                setCategories(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching categories:", error);
+            });
         axios.get("http://localhost:5000/api/menu")
             .then((response) => {
                 setProducts(response.data);
@@ -44,7 +53,7 @@ const AdminProduct = () => {
                                         <h2 className='mb-10'>آیا مطمین هستید ؟</h2>
                                         <div className='flex flex-row-reverse gap-5'>
                                             <Button text={"حذف"} onClick={() => handleDelete(item.id)} className='px-10' />
-                                            <Button text={"بازگشت"} onClick={() => setPopup((prev) => !prev)} className='bg-black px-10' />
+                                            <Button text={"بازگشت"} onClick={() => setPopup((prev) => !prev)} className='!bg-black px-10' />
                                         </div>
                                     </div>
                                     <div className='fixed w-screen h-screen backdrop-blur-sm bg-black/30 ' />
@@ -59,10 +68,20 @@ const AdminProduct = () => {
                                     </div>
                                 </div>
                                 <div className='flex flex-row-reverse gap-5 items-center'>
-                                    <p>{item.price} تومان</p>
+                                    <div>
+                                        <p className='text-nowrap'>{item.price} تومان</p>
+                                        <p>
+                                            {
+                                                categories.find(cat => cat.category === item.category)?.title || item.category
+
+                                            }
+                                        </p>
+                                    </div>
                                     <div className='flex flex-col gap-1'>
                                         <Button text={"حذف"} onClick={() => setPopup((prev) => !prev)} className='w-full text-white px-4 py-2 rounded' />
-                                        <Button text={"ویرایش"} className='w-full text-white px-4 py-2 rounded' />
+                                        <Link to={'/admin/editproduct'} state={{ product: item }}>
+                                            <Button text={"ویرایش"} className='w-full text-white px-4 py-2 rounded' />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

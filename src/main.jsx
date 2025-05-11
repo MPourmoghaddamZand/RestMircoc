@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ShopCart from "./components/ShopCart.jsx";
 import Admin from "./admin/Admin.jsx";
 import AddProduct from "./admin/AddProduct.jsx";
+import EditProduct from "./admin/EditProduct.jsx";
 
 
 createRoot(document.getElementById("root")).render(
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/cart" element={<ShopCart />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/addproduct" element={<AddProduct />} />
+          <Route path="/admin/editproduct" element={<EditProduct />} />
         </Routes>
       </BrowserRouter>
     </SharedProvider>

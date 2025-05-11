@@ -118,6 +118,37 @@ app.delete('/api/menu/:id', (req, res) => {
     });
 });
 
+// ویرایش یک محصول خاص با استفاده از ID
+app.put('/api/menu/:id', (req, res) => {
+    const productId = parseInt(req.params.id);
+    const { name, detail, price, category, image } = req.body;
+
+    const productIndex = menu.findIndex(item => item.id === productId);
+
+    if (productIndex === -1) {
+        return res.status(404).json({ message: 'محصول پیدا نشد' });
+    }
+
+    // به‌روزرسانی فیلدها
+    menu[productIndex] = {
+        ...menu[productIndex],
+        name,
+        detail,
+        price,
+        category,
+        image: image || menu[productIndex].image, // اگه تصویری ارسال نشه، همون قبلی بمونه
+    };
+
+    // ذخیره در فایل JSON
+    fs.writeFile(menuPath, JSON.stringify(menu, null, 2), (err) => {
+        if (err) {
+            console.error('خطا در نوشتن فایل:', err);
+            return res.status(500).json({ message: 'خطا در ذخیره تغییرات' });
+        }
+
+        res.status(200).json(menu[productIndex]);
+    });
+});
 
 // شروع سرور
 app.listen(port, () => {
